@@ -1,0 +1,32 @@
+//"https://item.nftgear.io/" + serialNumber
+{
+  "description": "productDescription",
+  "external_url": "https://nftgear.io/",
+  "image": "https://item.nftgear.io/image/" + serialNumber,
+  "name": SourceNFTName + " " + NFTID + " " + ProductName,
+  "attributes": [
+    {"SourceNFT Address": 0x9483290458304},
+    {"SourceNFT TokenID": 173},
+    {"SourceNFT Name": "something"},
+    {"SourceNFT Symbol": "SMTG"},
+    {"Product Type": "T-Shirt"},
+    {"Original Price": "$50"}
+  ],
+}
+
+
+// "ipfs://ipfs/ipfsCID_Of_json"
+{
+  "description": "productDescription",
+  "external_url": "https://nftgear.io/",
+  "image": "ipfs://" + _ipfsCIDOfImage,
+  "name": "Dave Starbelly",
+  "attributes": [
+    {"SourceNFT Address": 0x9483290458304},
+    {"SourceNFT TokenID": 173},
+    {"SourceNFT Name": "something"},
+    {"SourceNFT Symbol": "SMTG"},
+    {"Product Type": "T-Shirt"},
+    {"Original Price": "$50"}
+  ],
+}
