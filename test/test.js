@@ -2,8 +2,7 @@ require('dotenv').config();
 const hre = require('hardhat'),
   { expect } = require("chai"),
   utilsFactory = require('./utils'),
-  { MOONCAT_ACCLIMATOR_ADDRESS, MOONCAT_OWNER_ADDRESS , MOONCAT_RESCUE_ADDRESS} = process.env
- SIX_OWNED_MOONCATS = JSON.parse(process.env.SIX_OWNED_MOONCATS);
+  { MOONCAT_ACCLIMATOR_ADDRESS, MOONCAT_OWNER_ADDRESS , MOONCAT_RESCUE_ADDRESS, MOONCAT_TOKEN_ID} = process.env
 let currentSnapshot = false;
 describe('Name Cat', function() {
   before(async function() {
@@ -39,9 +38,8 @@ describe('Name Cat', function() {
     console.log(bytesName)
     await MCA.connect(MoonCatOwner)['safeTransferFrom(address,address,uint256,bytes)'](MOONCAT_OWNER_ADDRESS, NAMC.address, 2807,bytesName)
     //confirm catName
-    expect(await MCA.ownerOf(2807)).to.equal(MOONCAT_OWNER_ADDRESS, "cat not transfered back");
-    expect(await MCR.catNames("0x0014c26306")).to.equal(bytesName, "cat not named");
-
+    expect(await MCA.ownerOf(MOONCAT_TOKEN_ID)).to.equal(MOONCAT_OWNER_ADDRESS, "cat not transfered back");
+    expect(await MCR.catNames(CAT_ID)).to.equal(bytesName, "cat not named");
   });
 
 });
