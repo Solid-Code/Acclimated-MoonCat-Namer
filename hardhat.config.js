@@ -6,24 +6,25 @@ require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-web3");
 require("@nomiclabs/hardhat-waffle");
 
-const { API_URL, MNEMONIC_TEST, MNEMONIC } = process.env
+const { API_URL } = process.env
 
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      allowUnlimitedContractSize: true,
       forking: {
         url: API_URL,
-        blockNumber: 12565314 // Just after the first wrapping contract was deployed
-      }
+        blockNumber: 15499650
+      },
+      gas: 2500000,
 },
     local: {
       url: "http://127.0.0.1:8545",
       forking: {
         url: API_URL,
-        blockNumber: 12565314 // Just after the first wrapping contract was deployed
-      }
+        blockNumber: 15499650
+      },
+      gas: 2500000,
     },
     docker: {
       url: "http://hardhat-node:8545"

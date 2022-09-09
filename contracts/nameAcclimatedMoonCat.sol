@@ -12,12 +12,12 @@ contract nameAcclimatedMoonCat {
   function onERC721Received(address, address from, uint256 tokenId, bytes calldata data) public returns (bytes4) {
     require(data.length > 0, "no name provided");
     require(data.length <= 32, "name too long");
-    MoonCatAcclimator(MCAcclimator_Address).unwrap(tokenId);
-    bytes5 catId = MoonCatRescue(MCRescue_Address).rescueOrder(tokenId);
-    MoonCatRescue(MCRescue_Address).nameCat(catId,bytes32(data));
-    MoonCatRescue(MCRescue_Address).makeAdoptionOfferToAddress(catId, 0, MCAcclimator_Address);
-    MoonCatAcclimator(MCAcclimator_Address).wrap(tokenId);
-    MoonCatAcclimator(MCAcclimator_Address).safeTransferFrom(address(this), from, tokenId);
+    IMoonCatAcclimator(MCAcclimator_Address).unwrap(tokenId);
+    bytes5 catId = IMoonCatRescue(MCRescue_Address).rescueOrder(tokenId);
+    IMoonCatRescue(MCRescue_Address).nameCat(catId,bytes32(data));
+    IMoonCatRescue(MCRescue_Address).makeAdoptionOfferToAddress(catId, 0, MCAcclimator_Address);
+    IMoonCatAcclimator(MCAcclimator_Address).wrap(tokenId);
+    IMoonCatAcclimator(MCAcclimator_Address).safeTransferFrom(address(this), from, tokenId);
     return this.onERC721Received.selector;
   }
 }
