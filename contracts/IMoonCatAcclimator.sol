@@ -7,11 +7,5 @@ interface IMoonCatAcclimator
 
     function unwrap(uint256 _tokenId) external returns (uint256);
 
-    function ownerOf(uint256 _tokenId) external;
-
     function safeTransferFrom(address from, address to, uint256 tokenId) external;
-
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) external;
-
-    function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data) external returns (bytes4);
 }
