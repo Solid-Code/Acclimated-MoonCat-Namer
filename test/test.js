@@ -41,7 +41,7 @@ describe('Name Cat', function() {
     //setup impersonation
     MoonCatOwner = await ethers.provider.getSigner(MOONCAT_OWNER_ADDRESS);
     await ethers.provider.send("hardhat_impersonateAccount", [MOONCAT_OWNER_ADDRESS]);
-    let name = "Beelzebub"
+    let name = "Tomcat Petty"
     let bytesName = hre.ethers.utils.formatBytes32String(name)
     let tokenId = hre.ethers.BigNumber.from(MOONCAT_TOKEN_ID)
     let name2 = hre.ethers.utils.parseBytes32String(bytesName)
@@ -51,11 +51,11 @@ describe('Name Cat', function() {
     console.log("MOONCAT_OWNER_ADDRESS: ", MOONCAT_OWNER_ADDRESS)
     console.log("MOONCAT_TOKEN_ID: ", hre.ethers.BigNumber.from(MOONCAT_TOKEN_ID))
     console.log("catId: ", CAT_ID);
-    //expect(await MCR.catNames(CAT_ID)).to.not.equal(bytesName, "cat already named");
+    expect(await MCR.catNames(CAT_ID)).to.not.equal(bytesName, "cat already named");
     await MCA.connect(MoonCatOwner)['safeTransferFrom(address,address,uint256,bytes)'](MOONCAT_OWNER_ADDRESS, NAMC.address, tokenId, bytesName)
     //confirm catName
     expect(await MCA.ownerOf(hre.ethers.BigNumber.from(MOONCAT_TOKEN_ID))).to.equal(MOONCAT_OWNER_ADDRESS, "cat not transfered back");
-    expect(await MCR.catNames(CAT_ID)).to.equal(bytesName, "cat not named");
+    expect(hre.ethers.utils.parseBytes32String(await MCR.catNames(CAT_ID))).to.equal(name, "cat not named");
   });
 
 });

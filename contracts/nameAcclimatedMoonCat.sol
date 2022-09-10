@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-
+// Tested cheaper. maybe new ways to save gas?
 pragma solidity ^0.8.0;
 
 import "./IMoonCatAcclimator.sol";

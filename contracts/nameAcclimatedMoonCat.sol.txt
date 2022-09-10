@@ -7,8 +7,8 @@ import "./IMoonCatRescue.sol";
 
 contract nameAcclimatedMoonCat {
 
-   MoonCatRescue MCR = MoonCatRescue(0x60cd862c9C687A9dE49aecdC3A99b74A4fc54aB6);
-   MoonCatAcclimator MCA = MoonCatAcclimator(0xc3f733ca98E0daD0386979Eb96fb1722A1A05E69);
+   IMoonCatRescue MCR = IMoonCatRescue(0x60cd862c9C687A9dE49aecdC3A99b74A4fc54aB6);
+   IMoonCatAcclimator MCA = IMoonCatAcclimator(0xc3f733ca98E0daD0386979Eb96fb1722A1A05E69);
 
   function onERC721Received(address, address from, uint256 tokenId, bytes calldata data) public returns (bytes4) {
     require(data.length > 0, "no name provided");
